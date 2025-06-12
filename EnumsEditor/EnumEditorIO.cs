@@ -15,7 +15,9 @@ namespace EnumsEditor
 		private class EnumEditorIO<TEnum1>
 		{
 			[BoxGroup("File path")]
-			[SerializeField, LabelText("Auto find")] private bool _autoFindEnumFile = true;
+			[SerializeField, LabelText("Auto find")]
+			private bool _autoFindEnumFile = true;
+			
 			[BoxGroup("File path")]
 			[SerializeField, LabelText("Manual path"), HideIf(nameof(_autoFindEnumFile))]
 			[InfoBox("Click on cs file with RMB -> Copy Path")]

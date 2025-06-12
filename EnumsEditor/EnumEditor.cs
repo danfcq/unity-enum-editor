@@ -10,16 +10,19 @@ namespace EnumsEditor
 	{
 #if UNITY_EDITOR
 		[InlineProperty, HideLabel]
-		[SerializeField] private EnumEditorIO<TEnum> _inputOutput = new();
+		[SerializeField]
+		private EnumEditorIO<TEnum> _inputOutput = new();
 
 		[BoxGroup("Add")]
 		[HorizontalGroup("Add/Horizontal")]
-		[SerializeField, LabelText("Name"), LabelWidth(50)] private string _addEntryName;
+		[SerializeField, LabelText("Name"), LabelWidth(50)]
+		private string _addEntryName;
 
 		[HorizontalGroup("Add/Horizontal")]
-		[Button("Add"), DisableIf(nameof(CheckIfAddButtonNeedToBeDisabled))] private void AddEnumEntry()
+		[Button("Add"), DisableIf(nameof(CheckIfAddButtonNeedToBeDisabled))]
+		private void AddEntry()
 		{
-			AddEnumEntry(_addEntryName);
+			AddEntry(_addEntryName);
 			_addEntryName = string.Empty;
 		}
 
@@ -31,16 +34,18 @@ namespace EnumsEditor
 
 		[BoxGroup("Remove")]
 		[HorizontalGroup("Remove/Horizontal")]
-		[SerializeField, LabelText("ID"), LabelWidth(50)] private TEnum _removeEntryType;
+		[SerializeField, LabelText("ID"), LabelWidth(50)]
+		private TEnum _removeEntryType;
 
 		[HorizontalGroup("Remove/Horizontal")]
-		[Button("Remove")] private void RemoveEnumEntry()
+		[Button("Remove")]
+		private void RemoveEntry()
 		{
-			RemoveEnumEntry(_removeEntryType);
+			RemoveEntry(_removeEntryType);
 			_removeEntryType = default;
 		}
 
-		public void AddEnumEntry(string newEnumName)
+		public void AddEntry(string newEnumName)
 		{
 			if (_inputOutput.LoadEnumsFromFile(out List<string> parsedEnumRaw))
 			{
@@ -52,7 +57,7 @@ namespace EnumsEditor
 			}
 		}
 
-		public void AddEnumEntry(string newEnumName, int id, bool forceID = false)
+		public void AddEntry(string newEnumName, int id, bool forceID = false)
 		{
 			if (_inputOutput.LoadEnumsFromFile(out List<string> parsedEnumRaw))
 			{
@@ -64,7 +69,7 @@ namespace EnumsEditor
 			}
 		}
 
-		public void RemoveEnumEntry(TEnum entry)
+		public void RemoveEntry(TEnum entry)
 		{
 			if (_inputOutput.LoadEnumsFromFile(out List<string> parsedEnumRaw))
 			{
