@@ -26,6 +26,16 @@ namespace EnumsEditor
 				}
 			}
 
+			public void AddEntry(string name, int id, bool forceID = false)
+			{
+				if (IsNameValid(name))
+				{
+					var existingEntryWithID = _entries.Find(e => e.ID == id);
+					if (existingEntryWithID == null || forceID)
+						_entries.Add(new ParsedEnumEntry(name, id));
+				}
+			}
+
 			public void RemoveEntry(string name)
 			{
 				_entries.RemoveAll(entry => entry.Name == name);
