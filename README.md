@@ -1,5 +1,4 @@
 # EnumEditor for Unity
-A Serialized Enum Editor for Unity.
 
 [![Unity](https://img.shields.io/badge/Unity-2021+-black.svg)](https://unity3d.com/pt/get-unity/download/archive)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -9,7 +8,12 @@ A Serialized Enum Editor for Unity.
 
 ![EnumEditor Screenshot](README_RESOURCES/EnumEditor_screenshot.png)
 
-## 🛠️ Main Features 
+## 🔍️ Overview
+- A simple and user-friendly Enum Editor tool designed for Unity.
+- Parses and directly modifies `.cs` files containing enums.
+- Built with non-programmers in mind, so editing code is no longer required.
+
+## 🛠️ Main Features
 - **Easily Add or Remove Enum Entries**: Manage entries with awareness of constant values to keep enums consistent. 
 - **Flexible File Path Handling**: Auto-detect enum files or specify the path manually.
 - **Odin Inspector Integration**: Powered by Odin for a sleek and user-friendly editor experience.
