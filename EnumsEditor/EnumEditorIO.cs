@@ -14,11 +14,13 @@ namespace EnumsEditor
 		[Serializable]
 		private class EnumEditorIO<TEnum1>
 		{
-			[BoxGroup("File path")]
+			private const string ODIN_FILE_PATH_GROUP_ID = "File path";
+
+			[BoxGroup(ODIN_FILE_PATH_GROUP_ID)]
 			[SerializeField, LabelText("Auto find")]
 			private bool _autoFindEnumFile = true;
 			
-			[BoxGroup("File path")]
+			[BoxGroup(ODIN_FILE_PATH_GROUP_ID)]
 			[SerializeField, LabelText("Manual path"), HideIf(nameof(_autoFindEnumFile))]
 			[InfoBox("Click on cs file with RMB -> Copy Path")]
 			private string _manualEnumFilePath;

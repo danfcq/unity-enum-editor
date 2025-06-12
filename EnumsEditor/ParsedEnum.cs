@@ -132,7 +132,7 @@ namespace EnumsEditor
 					}
 					else
 					{
-						UnityEngine.Debug.LogError("Parsing not an enum string. WTF bro?");
+						UnityEngine.Debug.LogError("Failed to parse enum string. Ensure the input matches the expected format.");
 					}
 				}
 

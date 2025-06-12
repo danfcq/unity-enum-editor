@@ -9,17 +9,22 @@ namespace EnumsEditor
 	public partial class EnumEditor<TEnum> where TEnum : Enum
 	{
 #if UNITY_EDITOR
+		private const string ODIN_ADD_GROUP_ID = "Add";
+		private const string ODIN_ADD_SUBGROUP_ID = ODIN_ADD_GROUP_ID + "/Horizontal";
+		private const string ODIN_REMOVE_GROUP_ID = "Remove";
+		private const string ODIN_REMOVE_SUBGROUP_ID = ODIN_REMOVE_GROUP_ID + "/Horizontal";
+
 		[InlineProperty, HideLabel]
 		[SerializeField]
 		private EnumEditorIO<TEnum> _inputOutput = new();
 
-		[BoxGroup("Add")]
-		[HorizontalGroup("Add/Horizontal")]
+		[BoxGroup(ODIN_ADD_GROUP_ID)]
+		[HorizontalGroup(ODIN_ADD_SUBGROUP_ID)]
 		[SerializeField, LabelText("Name"), LabelWidth(50)]
 		private string _addEntryName;
 
-		[HorizontalGroup("Add/Horizontal")]
-		[Button("Add"), DisableIf(nameof(CheckIfAddButtonNeedToBeDisabled))]
+		[HorizontalGroup(ODIN_ADD_SUBGROUP_ID)]
+		[Button(ODIN_ADD_GROUP_ID), DisableIf(nameof(CheckIfAddButtonNeedToBeDisabled))]
 		private void AddEntry()
 		{
 			AddEntry(_addEntryName);
@@ -32,13 +37,13 @@ namespace EnumsEditor
 			return addValueExists == false || _addEntryName.IsValidCSharpOperatorName() == false;
 		}
 
-		[BoxGroup("Remove")]
-		[HorizontalGroup("Remove/Horizontal")]
+		[BoxGroup(ODIN_REMOVE_GROUP_ID)]
+		[HorizontalGroup(ODIN_REMOVE_SUBGROUP_ID)]
 		[SerializeField, LabelText("ID"), LabelWidth(50)]
 		private TEnum _removeEntryType;
 
-		[HorizontalGroup("Remove/Horizontal")]
-		[Button("Remove")]
+		[HorizontalGroup(ODIN_REMOVE_SUBGROUP_ID)]
+		[Button(ODIN_REMOVE_GROUP_ID)]
 		private void RemoveEntry()
 		{
 			RemoveEntry(_removeEntryType);
