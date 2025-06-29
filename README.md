@@ -3,9 +3,6 @@
 [![Unity](https://img.shields.io/badge/Unity-2021+-black.svg)](https://unity3d.com/pt/get-unity/download/archive)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Requires Odin Inspector**(
-<a href="https://odininspector.com" target="Unity Odin Inspector"><img src="https://odininspector.com/files/misc/logo.png" alt="Unity Logo" width="60" /></a>)
-
 ![EnumEditor Screenshot](README_RESOURCES/EnumEditor_screenshot.png)
 
 ## 🔍️ Overview
@@ -20,12 +17,10 @@
 
 ## ⚙️ Installation 
 
-1. Copy or move the `EnumsEditor` folder into your Unity project's `Assets` folder:
+Copy or move the `EnumsEditor` folder into your Unity project's `Assets` folder:
    ```
    Your_Unity_Project/Assets/EnumsEditor
    ```
-
-2. Ensure you have [Odin Inspector](https://odininspector.com/) installed in your project, as it's required for this package.
 
 That's it! You can now start using the Unity Enum Editor to manage your enums. 🎉
 
