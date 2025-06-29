@@ -2,28 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 
 namespace EnumsEditor
 {
-#if UNITY_EDITOR
 	public partial class EnumEditor<TEnum> where TEnum : Enum
 	{
 		[Serializable]
 		private class EnumEditorIO<TEnum1>
 		{
-			private const string ODIN_FILE_PATH_GROUP_ID = "File path";
-
-			[BoxGroup(ODIN_FILE_PATH_GROUP_ID)]
-			[SerializeField, LabelText("Auto find")]
-			private bool _autoFindEnumFile = true;
-			
-			[BoxGroup(ODIN_FILE_PATH_GROUP_ID)]
-			[SerializeField, LabelText("Manual path"), HideIf(nameof(_autoFindEnumFile))]
-			[InfoBox("Click on cs file with RMB -> Copy Path")]
-			private string _manualEnumFilePath;
+			[SerializeField] private bool _autoFindEnumFile = true;
+			[SerializeField] private string _manualEnumFilePath;
 
 			public void WriteEnumsToFile(List<string> parsedEnumRaw)
 			{
@@ -83,7 +73,7 @@ namespace EnumsEditor
 				string enumName = GetEnumFileName();
 				string searchFilter = $"glob:\"Assets/**/*{enumName}\"";
 				string[] guids = AssetDatabase.FindAssets(searchFilter);
-				
+
 				if (guids.Length == 0)
 				{
 					EditorUtility.DisplayDialog("Enum Editor Message", "Enum file not found. " +
@@ -91,25 +81,25 @@ namespace EnumsEditor
 					path = null;
 					return false;
 				}
-				
+
 				if (guids.Length > 1)
 				{
 					string[] paths = guids.Select(AssetDatabase.GUIDToAssetPath).ToArray();
 					string pathWithSameName = paths.FirstOrDefault(path => Path.GetFileName(path) == enumName);
-					
+
 					if (pathWithSameName != null)
 					{
 						path = AssetDatabase.GUIDToAssetPath(guids[0]);
 						return true;
 					}
-					
+
 					EditorUtility.DisplayDialog("Enum Editor Message", $"Found more than one enum file:" +
 					                                                   $"\n\nSearch filter: {searchFilter}" +
 					                                                   $"\n\n{paths.ListToString()}", "Close");
 					path = null;
 					return false;
 				}
-				
+
 				path = AssetDatabase.GUIDToAssetPath(guids[0]);
 				return true;
 			}
@@ -121,5 +111,4 @@ namespace EnumsEditor
 			private string GetEnumFileName() => typeof(TEnum1).Name + ".cs";
 		}
 	}
-#endif
 }

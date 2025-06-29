@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace EnumsEditor
 {
-#if UNITY_EDITOR
 	public partial class EnumEditor<TEnum> where TEnum : Enum
 	{
 		private class ParsedEnum
@@ -111,7 +110,7 @@ namespace EnumsEditor
 
 			private class ParsedEnumEntry
 			{
-				private readonly string _name;
+				private string _name;
 				private int? _id;
 
 				public string Name => _name;
@@ -132,7 +131,7 @@ namespace EnumsEditor
 					}
 					else
 					{
-						UnityEngine.Debug.LogError("Failed to parse enum string. Ensure the input matches the expected format.");
+						UnityEngine.Debug.LogError("Parsing not an enum string.");
 					}
 				}
 
@@ -175,5 +174,4 @@ namespace EnumsEditor
 			}
 		}
 	}
-#endif
 }
